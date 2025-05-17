@@ -1,21 +1,14 @@
 version: '3.8'
-
 services:
-  real-estate-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: real-estate-gui
+  angular-app:
+    image: binbashbaba/real-estate-gui-app:latest
+    container_name: real-estate-gui-app
     ports:
-      - "8000:8000"  # Adjust the port according to your app's needs
-    volumes:
-      - .:/app
-    environment:
-      - DEBUG=1
-    restart: unless-stopped
+      - "80:80"
+    restart: always
     networks:
-      - real-estate-network
+      - app-network
 
 networks:
-  real-estate-network:
+  app-network:
     driver: bridge
