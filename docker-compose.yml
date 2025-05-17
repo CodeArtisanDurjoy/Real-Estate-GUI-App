@@ -1,7 +1,11 @@
 version: '3.8'
+
 services:
   angular-app:
-    image: binbashbaba/real-estate-gui-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: real-estate-gui-app:latest
     container_name: real-estate-gui-app
     ports:
       - "80:80"
