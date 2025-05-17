@@ -1,0 +1,130 @@
+{
+  "hash": "c4519e5d",
+  "configHash": "77d19bea",
+  "lockfileHash": "101e0917",
+  "browserHash": "37b577ed",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "f399e4bd",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "038d870d",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "e0e72564",
+      "needsInterop": false
+    },
+    "@angular/fire/compat": {
+      "src": "../../../../../node_modules/@angular/fire/fesm2022/angular-fire-compat.mjs",
+      "file": "@angular_fire_compat.js",
+      "fileHash": "84a18ccf",
+      "needsInterop": false
+    },
+    "@angular/fire/compat/storage": {
+      "src": "../../../../../node_modules/@angular/fire/fesm2022/angular-fire-compat-storage.mjs",
+      "file": "@angular_fire_compat_storage.js",
+      "fileHash": "862fb8e3",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "111c32bc",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "80564209",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "c6b561db",
+      "needsInterop": false
+    },
+    "firebase/compat/app": {
+      "src": "../../../../../node_modules/firebase/compat/app/dist/esm/index.esm.js",
+      "file": "firebase_compat_app.js",
+      "fileHash": "638df9e5",
+      "needsInterop": false
+    },
+    "firebase/compat/auth": {
+      "src": "../../../../../node_modules/firebase/compat/auth/dist/esm/index.esm.js",
+      "file": "firebase_compat_auth.js",
+      "fileHash": "3c095a95",
+      "needsInterop": false
+    },
+    "firebase/compat/firestore": {
+      "src": "../../../../../node_modules/firebase/compat/firestore/dist/esm/index.esm.js",
+      "file": "firebase_compat_firestore.js",
+      "fileHash": "74911697",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "9ed79000",
+      "needsInterop": false
+    },
+    "rxjs/operators": {
+      "src": "../../../../../node_modules/rxjs/dist/esm5/operators/index.js",
+      "file": "rxjs_operators.js",
+      "fileHash": "9b083398",
+      "needsInterop": false
+    },
+    "swiper/element/bundle": {
+      "src": "../../../../../node_modules/swiper/element/swiper-element-bundle.js",
+      "file": "swiper_element_bundle.js",
+      "fileHash": "3d0d8c0a",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-3T4VILH3": {
+      "file": "chunk-3T4VILH3.js"
+    },
+    "chunk-ZCLCE55W": {
+      "file": "chunk-ZCLCE55W.js"
+    },
+    "chunk-4HGHWBJA": {
+      "file": "chunk-4HGHWBJA.js"
+    },
+    "chunk-S6NCUEZD": {
+      "file": "chunk-S6NCUEZD.js"
+    },
+    "chunk-PQ5B6CP6": {
+      "file": "chunk-PQ5B6CP6.js"
+    },
+    "chunk-UY24KLND": {
+      "file": "chunk-UY24KLND.js"
+    },
+    "chunk-LS4DKMV5": {
+      "file": "chunk-LS4DKMV5.js"
+    },
+    "chunk-J7XCDFY4": {
+      "file": "chunk-J7XCDFY4.js"
+    },
+    "chunk-37FAEFAL": {
+      "file": "chunk-37FAEFAL.js"
+    },
+    "chunk-V7OPD7V6": {
+      "file": "chunk-V7OPD7V6.js"
+    },
+    "chunk-UVRQ5DNN": {
+      "file": "chunk-UVRQ5DNN.js"
+    },
+    "chunk-35ENWJA4": {
+      "file": "chunk-35ENWJA4.js"
+    }
+  }
+}

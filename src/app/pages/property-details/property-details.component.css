@@ -1,0 +1,12 @@
+.house-agent-name {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+.custom-color {
+  background-color: #f2f2f2;
+}
+
+.custom-color2:hover {
+  background-color: #565564;
+}

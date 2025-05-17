@@ -1,0 +1,5 @@
+<swiper-container fmSwiper [config]="config" init="false">
+  <swiper-slide *ngFor="let image of images; let i = index">
+    <img src="{{ image }}" alt="Image {{ i }}" />
+  </swiper-slide>
+</swiper-container>

@@ -1,0 +1,280 @@
+<div class="flex flex-col">
+  <section
+    class="min-h-screen flex flex-col md:flex-row py-12 xl:py-24 gap-8 md:gap-10 md:px-10 hero-section"
+  >
+    <!---image-->
+    <div class="flex-0 sm:flex-1 flex justify-center"></div>
+    <div
+      class="lg:mr-4 flex flex-col lg:items-start text-center lg:text-left lg:justify-center px-4 lg:px-0 gap-6 flex-1 custom-font mt-20 lg:mt-0"
+    >
+      <h1
+        class="lg:text-[58px] text-2xl leading-tight font-bold lg:max-w-[550px]"
+      >
+        Your Dream House Is One Step Away
+      </h1>
+      <p class="max-w-[480px] font-normal text-gray-800">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium
+        rerum soluta quo dolore odio, repudiandae, et odit possimus quas eveniet
+        id! Eligendi aspernatur pariatur, a numquam labore eos distinctio
+        explicabo.
+      </p>
+      <!-----search bar------>
+      <div class="relative mt-3 shadow-md">
+        <form (ngSubmit)="onSubmitForm()">
+          <input
+            type="text"
+            class="rounded p-4 w-full lg:w-[39rem]"
+            [(ngModel)]="searchTerm"
+            placeholder="Search by name..."
+            name="searchTerm"
+          />
+          <button
+            type="submit"
+            class="absolute top-1/2 transform -translate-y-1/2 right-0 mr-4 text-purple-lighter"
+          >
+            <i class="fas fa-search text-dark text-lg"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- property listings-->
+
+  <section class="p-20 px-20 bg-white min-h-screen">
+    <h1 class="text-center font-semibold text-4xl mb-16">Recent Properties</h1>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-14">
+      <app-listing-item
+        *ngFor="let listing of listings"
+        [listing]="listing"
+      ></app-listing-item>
+    </div>
+  </section>
+  <section class="p-20 px-20 min-h-[90vh]" id="servicesSection">
+    <h1 class="text-center font-semibold text-4xl mb-16">Our Services</h1>
+    <div
+      class="max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 md:max-w-2xl lg:max-w-none"
+    >
+      <app-services-card
+        [imageUrl]="'../../../../assets/Group 22.png'"
+        [title]="'Property Listings'"
+        [description]="
+          'Browse through our extensive collection of residential and commercial properties'
+        "
+      ></app-services-card>
+
+      <app-services-card
+        [imageUrl]="'../../../../assets/Group 23.png'"
+        [title]="'Home Valuation'"
+        [description]="
+          'Get an accurate estimate of your home\'s value with our professional valuation services'
+        "
+      ></app-services-card>
+
+      <app-services-card
+        [imageUrl]="'../../../../assets/Group 22.png'"
+        [title]="'Property Management'"
+        [description]="
+          'Efficiently manage your rental properties with our comprehensive property management services'
+        "
+      ></app-services-card>
+    </div>
+  </section>
+  <section
+    class="px-20 bg-custom3 min-h-screen flex items-center justify-center"
+  >
+    <div
+      class="p-8 md:px-20 md:py-20 mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center"
+    >
+      <h2 class="text-black text-3xl whitespace-nowrap md:text-6xl font-bold">
+        Build faster websites.
+      </h2>
+      <p class="mt-7 text-md md:text-xl font-medium">
+        Pull content from anywhere and serve it fast with Astro's next-gen
+        island architecture.
+      </p>
+      <div class="flex mt-7">
+        <a
+          [routerLink]="['/search']"
+          [queryParams]="{ limit: 9, searchTerm: '' }"
+          class="bg-black text-white px-4 py-3 rounded-full font-semibold"
+        >
+          Get Started
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="px-20 bg-white py-10 mt-16 min-h-screen" id="contactSection">
+    <h1 class="text-center font-semibold text-4xl mb-8">Contact Us</h1>
+    <div class="block rounded-lg px-6 py-12 md:py-16 md:px-12">
+      <div class="flex flex-wrap">
+        <div
+          class="mb-12 w-full shrink-0 grow-0 basis-auto md:px-3 lg:mb-0 lg:w-5/12 lg:px-6"
+        >
+          <form
+            #contactForm="ngForm"
+            (ngSubmit)="sendEmail(contactForm)"
+            class="flex flex-col gap-7"
+          >
+            <input
+              ngModel
+              name="name"
+              type="text"
+              class="border min-h-[auto] w-full rounded py-[0.32rem] px-3"
+              id="name"
+              placeholder="Name"
+            />
+
+            <input
+              ngModel
+              name="email"
+              type="email"
+              class="border block min-h-[auto] w-full rounded py-[0.32rem] px-3"
+              id="exampleInput91"
+              placeholder="Email address"
+            />
+
+            <textarea
+              ngModel
+              name="message"
+              class="border block min-h-[auto] w-full rounded py-[0.32rem] px-3"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="Your message"
+            ></textarea>
+
+            <button
+              type="submit"
+              [disabled]="contactForm.invalid"
+              class="mb-6 inline-block w-full rounded-full font-bold bg-black px-6 pt-2.5 pb-2 text-sm text-white shadow-md lg:mb-0"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+        <div class="w-full shrink-0 grow-0 basis-auto lg:w-7/12">
+          <div class="flex flex-wrap">
+            <div
+              class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:w-full lg:px-6 xl:w-6/12"
+            >
+              <div class="flex items-start">
+                <div class="shrink-0">
+                  <div class="inline-block rounded-md p-4 shadow-md">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                      class="h-6 w-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14.25 9.75v-4.5m0 4.5h4.5m-4.5 0l6-6m-3 18c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 014.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 00-.38 1.21 12.035 12.035 0 007.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 011.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 01-2.25 2.25h-2.25z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-6 grow">
+                  <p class="mb-2 font-bold dark:text-white">Call Us</p>
+                  <p class="text-neutral-500 dark:text-neutral-200">
+                    +1 234-567-89
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:w-full lg:px-6 xl:w-6/12"
+            >
+              <div class="flex items-start">
+                <div class="shrink-0">
+                  <div class="inline-block rounded-md p-4 shadow-md">
+                    <svg
+                      fill="#000000"
+                      height="24px"
+                      width="24px"
+                      version="1.1"
+                      id="Layer_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      viewBox="0 0 15.36 15.36"
+                      enable-background="new 0 0 512 512"
+                      xml:space="preserve"
+                    >
+                      <path
+                        d="M7.68 0C4.479 0 1.92 2.559 1.92 5.76c0 1.107 0.33 1.962 0.903 2.829l4.251 6.45c0.129 0.195 0.351 0.321 0.606 0.321s0.48 -0.129 0.606 -0.321l4.251 -6.45C13.11 7.722 13.44 6.867 13.44 5.76 13.44 2.559 10.881 0 7.68 0zm0 8.958c-1.767 0 -3.201 -1.434 -3.201 -3.204S5.913 2.55 7.68 2.55c1.767 0 3.201 1.434 3.201 3.204S9.447 8.958 7.68 8.958z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-6 grow">
+                  <p class="mb-2 font-bold dark:text-white">Location</p>
+                  <p class="text-neutral-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mb-12 w-full shrink-0 grow-0 basis-auto md:mb-0 md:w-6/12 md:px-3 lg:mb-12 lg:w-full lg:px-6 xl:w-6/12"
+            >
+              <div class="align-start flex">
+                <div class="shrink-0">
+                  <div class="inline-block rounded-md p-4 shadow-md">
+                    <svg
+                      width="24px"
+                      height="24px"
+                      viewBox="0 0 0.72 0.72"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.06 0.18a0.06 0.06 0 0 1 0.06 -0.06h0.48a0.06 0.06 0 0 1 0.06 0.06v0.36a0.06 0.06 0 0 1 -0.06 0.06H0.12a0.06 0.06 0 0 1 -0.06 -0.06V0.18zm0.106 0L0.36 0.35 0.554 0.18H0.166zM0.6 0.22l-0.22 0.193a0.03 0.03 0 0 1 -0.04 0L0.12 0.22V0.54h0.48V0.22z"
+                        fill="#0D0D0D"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-6 grow">
+                  <p class="mb-2 font-bold dark:text-white">Email Us</p>
+                  <p class="text-neutral-500 dark:text-neutral-200">
+                    pressaexample.com
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:w-full lg:px-6 xl:mb-12 xl:w-6/12"
+            >
+              <div class="align-start flex">
+                <div class="shrink-0">
+                  <div class="inline-block rounded-md p-4 shadow-md">
+                    <svg
+                      width="24px"
+                      height="24px"
+                      viewBox="0 0 24 24"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>Facebook icon</title>
+                      <path
+                        d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-6 grow">
+                  <p class="mb-2 font-bold">Facebook</p>
+                  <p class="text-neutral-500 break-all">
+                    https://www.facebook.com/profile.php
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

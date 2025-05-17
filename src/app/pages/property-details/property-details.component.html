@@ -1,0 +1,118 @@
+<ng-container *ngIf="loadingService.isLoading; else loadedContent">
+  <div class="min-h-screen">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+
+<ng-template #loadedContent>
+  <section class="">
+    <div class="container mx-auto p-14 flex flex-col gap-8">
+      <div
+        class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-0"
+      >
+        <div class="flex flex-col gap-4 items-center sm:items-stretch">
+          <h3 class="text-2xl font-semibold">{{ listing.name }}</h3>
+          <p class="text-lg">{{ listing.address }}</p>
+        </div>
+        <div class="">
+          <div class="text-4xl font-semibold text-black pb-3 text-center">
+            {{ listing.price }}
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-8 lg:flex-row">
+        <div class="max-w-[768px] flex flex-col gap-6">
+          <div class="">
+            <app-carousel [images]="listing.imageUrls"></app-carousel>
+          </div>
+          <div class="flex gap-6 flex-col xs:flex-row items-start">
+            <div class="flex gap-2 items-center">
+              <i class="fa-solid fa-bed mr-[1px] text-xl"></i>
+              <div>{{ listing.bedrooms }}</div>
+            </div>
+            <div class="flex gap-2 items-center">
+              <i class="fa-solid fa-bath mr-[1px] text-xl"></i>
+              <div>{{ listing.bathrooms }}</div>
+            </div>
+            <div class="flex gap-2 items-center">
+              <i class="fa-solid fa-couch mr-[1px] text-xl"></i>
+              <div>
+                <ng-container *ngIf="listing.furnished; else notFurnished">
+                  Furnished
+                </ng-container>
+                <ng-template #notFurnished> Not Furnished </ng-template>
+              </div>
+            </div>
+            <div class="flex gap-2 items-center">
+              <i class="fas fa-parking mr-[1px] text-xl"></i>
+              <div>
+                <ng-container *ngIf="listing.parking; else noParking">
+                  With Parking
+                </ng-container>
+                <ng-template #noParking> No Parking </ng-template>
+              </div>
+            </div>
+          </div>
+          <div class="break-words">{{ listing.description }}</div>
+        </div>
+        <div
+          class="bg-white flex-1 w-full mb-auto border border-gray-300 rounded-lg px-6 py-8 flex flex-col gap-8"
+        >
+          <div class="flex flex-col items-center justify-center gap-1">
+            <div class="w-20 h-20 border border-black-300 rounded-full">
+              <img
+                src="{{ landlord.avatar }}"
+                alt="Landlord Avatar"
+                class="w-full h-full object-cover rounded-full"
+              />
+            </div>
+
+            <div class="">
+              <div class="font-bold text-lg house-agent-name">
+                {{ landlord.username }}
+              </div>
+            </div>
+          </div>
+          <form
+            #contactForm="ngForm"
+            (ngSubmit)="sendEmail(contactForm)"
+            class="flex flex-col gap-4"
+          >
+            <input
+              ngModel
+              name="name"
+              class="border border-gray-300 rounded w-full px-4 h-14 text-sm"
+              type="text"
+              placeholder="Name*"
+              required
+            />
+            <input
+              ngModel
+              name="email"
+              class="border border-gray-300 rounded w-full px-4 h-14 text-sm"
+              type="email"
+              placeholder="Email*"
+              required
+            />
+
+            <textarea
+              ngModel
+              name="message"
+              class="border border-gray-300 resize-none rounded w-full p-4 h-36 text-sm"
+              placeholder="Message*"
+              required
+            ></textarea>
+
+            <button
+              type="submit"
+              class="bg-black text-white custom-color2 rounded p-4 text-sm w-full transition"
+              [disabled]="contactForm.invalid"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>

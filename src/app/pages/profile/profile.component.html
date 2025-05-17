@@ -1,0 +1,146 @@
+<ng-container *ngIf="loadingService.isLoading; else loadedContent">
+  <div class="min-h-screen">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+
+<ng-template #loadedContent>
+  <div class="min-h-screen bg-gray-100 flex flex-col justify-center">
+    <div
+      class="container mx-auto bg-white max-w-lg rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300 mb-10 mt-10"
+    >
+      <div class="p-3 max-w-lg mx-auto">
+        <h1 class="text-3xl font-semibold text-center my-7">Profile</h1>
+        <form
+          #updateForm="ngForm"
+          (ngSubmit)="onProfileUpdate(updateForm)"
+          class="flex flex-col gap-3"
+        >
+          <img
+            [src]="userAvatar"
+            alt="avatar"
+            class="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2 mb-7"
+          />
+          <input
+            type="text"
+            placeholder="Username"
+            [(ngModel)]="username"
+            name="username"
+            class="border p-3 rounded-lg"
+          />
+
+          <input
+            type="email"
+            placeholder="Email"
+            [(ngModel)]="email"
+            name="email"
+            class="border p-3 rounded-lg mb-5"
+          />
+
+          <button
+            type="submit"
+            class="bg-black text-white rounded-lg px-4 py-3 bg-blue-600 hover:bg-blue-500"
+          >
+            Update Profile
+          </button>
+          <button
+            (click)="onShowListings()"
+            class="bg-green-600 text-white rounded-lg px-4 py-3"
+          >
+            Show Listings
+          </button>
+        </form>
+        <div class="flex justify-between mt-6 mb-6">
+          <span
+            (click)="onDeleteAccount()"
+            class="text-red-700 cursor-pointer font-semibold"
+          >
+            Delete account
+          </span>
+
+          <span
+            class="text-red-700 cursor-pointer font-semibold"
+            (click)="onSignout()"
+          >
+            Sign out
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <ng-container
+      *ngIf="
+        showlistings &&
+        (userListings === undefined || userListings.length === 0)
+      "
+    >
+      <h1 class="text-center mt-2 mb-16 text-2xl font-semibold">
+        You have no listing!
+      </h1>
+    </ng-container>
+    <ng-container
+      *ngIf="showlistings && userListings && userListings.length > 0"
+    >
+      <div
+        class="container mx-auto bg-white max-w-lg rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300 mb-10"
+      >
+        <div class="flex flex-col gap-4">
+          <h1 class="text-center mt-7 text-2xl font-semibold">Your Listings</h1>
+          <div
+            *ngFor="let listing of userListings"
+            class="border rounded-lg p-3 flex justify-between items-center gap-4 mb-10"
+          >
+            <a
+              [routerLink]="
+                listing.id !== undefined
+                  ? '/propertyDetails/' + listing.id
+                  : null
+              "
+            >
+              <img
+                [src]="listing.imageUrls[0]"
+                alt="listing cover"
+                class="h-16 w-16 object-contain"
+              />
+            </a>
+            <a
+              class="text-slate-700 font-semibold hover:underline truncate flex-1"
+              [routerLink]="
+                listing.id !== undefined
+                  ? '/propertyDetails/' + listing.id
+                  : null
+              "
+            >
+              <p>{{ listing.name }}</p>
+            </a>
+
+            <div class="flex flex-col item-center gap-1">
+              <button
+                (click)="
+                  listing.id !== undefined ? onListingDelete(listing.id) : null
+                "
+                class="bg-red-600 text-white rounded-lg px-4 py-3 w-full"
+              >
+                Delete
+              </button>
+
+              <a
+                [routerLink]="
+                  listing.id !== undefined
+                    ? '/update-property/' + listing.id
+                    : null
+                "
+              >
+                <button
+                  class="bg-blue-600 text-white rounded-lg px-4 py-3 w-full"
+                >
+                  Edit
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

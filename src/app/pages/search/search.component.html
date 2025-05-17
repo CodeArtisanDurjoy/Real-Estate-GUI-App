@@ -1,0 +1,94 @@
+<ng-container *ngIf="loadingService.isLoading; else loadedContent">
+  <div class="min-h-screen">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+
+<ng-template #loadedContent>
+  <div class="flex flex-col min-h-screen">
+    <div
+      class="p-7 border-b-2 md:border-r-2 md:flex md:items-center md:justify-center"
+    >
+      <form
+        #searchForm="ngForm"
+        (ngSubmit)="onSearchSubmit(searchForm)"
+        class="flex flex-col md:flex-row gap-8"
+      >
+        <div class="flex items-center gap-2">
+          <label class="whitespace-nowrap font-semibold"> Search Term: </label>
+          <input
+            type="text"
+            id="searchTerm"
+            placeholder="Search..."
+            [(ngModel)]="searchTerm"
+            name="searchTerm"
+            class="border rounded-lg p-3 w-full"
+          />
+        </div>
+
+        <div class="flex gap-2 flex-wrap items-center">
+          <label class="font-semibold">Amenities:</label>
+          <div class="flex gap-2">
+            <input
+              type="checkbox"
+              [(ngModel)]="parking"
+              name="parking"
+              class="w-5"
+            />
+            <span>Parking</span>
+          </div>
+          <div class="flex gap-2">
+            <input
+              type="checkbox"
+              class="w-5"
+              [(ngModel)]="furnished"
+              name="furnished"
+            />
+            <span>Furnished</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="font-semibold">Sort:</label>
+          <select
+            [(ngModel)]="sortOptions"
+            name="sortOptions"
+            class="border rounded-lg p-3 w-full"
+          >
+            <option value="price_desc">Price high to low</option>
+            <option value="price_asc">Price low to high</option>
+            <option value="createdAt_desc">Latest</option>
+            <option value="createdAt_asc">Oldest</option>
+          </select>
+        </div>
+        <button
+          [disabled]="!searchForm.valid"
+          type="submit"
+          class="bg-black text-white px-4 py-3 rounded-lg bg-blue-600 hover:bg-blue-500"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+    <div class="flex-1">
+      <div class="p-7 flex flex-wrap gap-4 justify-center">
+        <ng-container *ngIf="listings.length === 0">
+          <p class="text-xl text-slate-700">No listing found!</p>
+        </ng-container>
+        <ng-container *ngIf="listings">
+          <ng-container *ngFor="let listing of listings">
+            <app-listing-item [listing]="listing"></app-listing-item>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="flex items-center justify-center mb-5">
+        <button
+          *ngIf="showMoreBtn"
+          (click)="onShowMoreClick()"
+          class="text-white px-4 py-3 rounded-lg bg-blue-600 hover:bg-blue-500"
+        >
+          Show more
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

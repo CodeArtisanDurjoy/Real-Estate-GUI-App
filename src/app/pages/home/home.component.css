@@ -1,0 +1,56 @@
+.border-custom {
+  border-radius: 125px 125px 12px 12px;
+  box-shadow: 0 16px 32px hsla(106, 66%, 25%, 0.25);
+  overflow: hidden;
+  align-items: flex-end;
+}
+
+.custom-color {
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 6px;
+}
+
+.custom-color2 {
+  background-color: #fff;
+}
+
+.image-container {
+  opacity: 1;
+  transform: none;
+  overflow: hidden;
+  border-radius: 15rem 15rem 0 0;
+  border: 8px solid #423f3d;
+}
+
+.custom-color3:hover {
+  background-color: #565564;
+}
+
+.bg-custom3 {
+  background-color: #8eb2cc;
+}
+
+.custom-font {
+  font-family: "Roboto", sans-serif;
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    margin: 0;
+    padding: 0;
+    background-image: url("../../../assets/home2-resp.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (min-width: 601px) {
+  .hero-section {
+    margin: 0;
+    padding: 0;
+    background-image: url("../../../assets/home3.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}

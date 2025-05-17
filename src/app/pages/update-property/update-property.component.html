@@ -1,0 +1,141 @@
+<ng-container *ngIf="loadingService.isLoading; else loadedContent">
+  <div class="min-h-screen">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+
+<ng-template #loadedContent>
+  <div class="min-h-screen bg-gray-100 flex">
+    <div
+      class="container mx-auto bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300 mb-10 mt-10 h-fit"
+    >
+      <form
+        #updatePropertyForm="ngForm"
+        (ngSubmit)="onUpdateProperty(updatePropertyForm)"
+        class="form bg-white p-6 my-10 relative"
+      >
+        <h3 class="text-2xl text-gray-900 font-semibold">Edit a Property</h3>
+        <div class="sm:flex space-x-0 sm:space-x-5 mt-3">
+          <div class="sm:w-1/2 flex flex-col gap-2">
+            <label for="propertyName" class="text-gray-700 label-width"
+              >Name:</label
+            >
+            <input
+              type="text"
+              name="propertyName"
+              [(ngModel)]="propertyName"
+              placeholder="Property Name"
+              class="border p-2"
+              required
+            />
+          </div>
+          <div class="sm:w-1/2 mt-3 sm:mt-0 flex flex-col gap-2">
+            <label for="address" class="text-gray-700 label-width"
+              >Address:</label
+            >
+            <input
+              type="tel"
+              name="address"
+              placeholder="Address"
+              class="border p-2"
+              [(ngModel)]="address"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 mt-3">
+          <label for="propertyDescription" class="text-gray-700 label-width"
+            >Description:</label
+          >
+          <textarea
+            name="propertyDescription"
+            cols="10"
+            rows="3"
+            [(ngModel)]="propertyDescription"
+            placeholder="Property Description"
+            class="border p-2 w-full"
+            required
+          ></textarea>
+        </div>
+
+        <div class="sm:flex flex-wrap gap-1 justify-center mt-3">
+          <div class="flex flex-col gap-2 flex-grow">
+            <label for="bedrooms" class="text-gray-700 label-width"
+              >Bedrooms</label
+            >
+            <input
+              type="number"
+              name="bedrooms"
+              id="bedrooms"
+              min="1"
+              max="10"
+              placeholder="Bedrooms"
+              required
+              class="p-3 border border-gray-300 w-full"
+              [(ngModel)]="bedrooms"
+            />
+          </div>
+          <div class="flex-grow mt-3 sm:mt-0 flex flex-col gap-2">
+            <label for="bathrooms" class="text-gray-700 label-width"
+              >Bathrooms</label
+            >
+            <input
+              type="number"
+              name="bathrooms"
+              id="bathrooms"
+              min="1"
+              max="10"
+              required
+              placeholder="Bathrooms"
+              class="p-3 border border-gray-300 w-full"
+              [(ngModel)]="bathrooms"
+            />
+          </div>
+          <div class="flex-grow mt-3 sm:mt-0 flex flex-col gap-2">
+            <label for="propertyPrice" class="text-gray-700 label-width"
+              >Price</label
+            >
+            <input
+              type="number"
+              name="propertyPrice"
+              id="propertyPrice"
+              min="50"
+              max="10000000"
+              required
+              placeholder="Price"
+              class="p-3 border border-gray-300 w-full"
+              [(ngModel)]="propertyPrice"
+            />
+          </div>
+        </div>
+
+        <div class="flex gap-6 flex-wrap mt-5">
+          <div class="flex gap-2">
+            <input
+              type="checkbox"
+              name="parking"
+              class="w-5"
+              [(ngModel)]="parking"
+            />
+            <label for="parking" class="text-gray-700">Parking spot</label>
+          </div>
+          <div class="flex gap-2">
+            <input
+              type="checkbox"
+              name="furnished"
+              class="w-5"
+              [(ngModel)]="furnished"
+            />
+            <label for="furnished" class="text-gray-700">Furnished</label>
+          </div>
+        </div>
+
+        <input
+          type="submit"
+          value="Submit"
+          class="w-full mt-6 bg-blue-600 hover:bg-blue-500 text-white font-semibold p-3"
+          [disabled]="updatePropertyForm.invalid"
+        />
+      </form>
+    </div>
+  </div>
+</ng-template>

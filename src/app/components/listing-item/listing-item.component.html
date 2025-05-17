@@ -1,0 +1,50 @@
+<div
+  class="bg-white flex flex-col gap-3 shadow-1 p-2 rounded-xl w-full max-w-[352px] mx-auto cursor-pointer hover:shadow-2xl transition custom-font"
+>
+  <div class="flex flex-col">
+    <a [routerLink]="['/propertyDetails', listing.id]">
+      <img
+        [src]="listing.imageUrls[0]"
+        alt="listing cover"
+        class="rounded-xl h-[220px] lg:h-[320px] w-full object-cover"
+      />
+    </a>
+  </div>
+  <div class="flex flex-col gap-2 px-3">
+    <div class="flex items-center gap-1 mt-2">
+      <i class="fa-solid fa-location-dot mr-[3px] text-gray-600"></i>
+      <h3 class="text-lg font-semibold max-w-[260px]">{{ listing.address }}</h3>
+    </div>
+    <div class="flex gap-x-4">
+      <div class="flex items-center text-gray-600 gap-1">
+        <div class="text-[20px]">
+          <i class="fa-solid fa-bed mr-[3px]"></i>
+        </div>
+        <div class="">{{ listing.bedrooms }}</div>
+      </div>
+      <div class="flex items-center justify-center text-gray-600 gap-1">
+        <div class="text-[20px]">
+          <i class="fa-solid fa-bath mr-[3px]"></i>
+        </div>
+        <div class="">{{ listing.bathrooms }}</div>
+      </div>
+      <div
+        *ngIf="listing.furnished"
+        class="flex items-center text-gray-600 gap-1"
+      >
+        <div class="text-[20px]">
+          <i class="fa-solid fa-couch mr-[3px]"></i>
+        </div>
+      </div>
+      <div
+        *ngIf="listing.parking"
+        class="flex items-center text-gray-600 gap-1"
+      >
+        <div class="text-[20px]">
+          <i class="fas fa-parking mr-[3px]"></i>
+        </div>
+      </div>
+    </div>
+    <div class="text-xl font-bold text-black pb-3">{{ listing.price }}</div>
+  </div>
+</div>
