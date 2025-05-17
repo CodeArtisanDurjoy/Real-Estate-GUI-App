@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  real-estate-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: real-estate-gui
+    ports:
+      - "8000:8000"  # Adjust the port according to your app's needs
+    volumes:
+      - .:/app
+    environment:
+      - DEBUG=1
+    restart: unless-stopped
+    networks:
+      - real-estate-network
+
+networks:
+  real-estate-network:
+    driver: bridge
